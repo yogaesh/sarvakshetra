@@ -1,0 +1,27 @@
+#details
+  fieldset
+    legend {{title}}
+    .detail(*ngFor = '#entry of entries; #index = index')
+      fieldset
+        legend(*ngIf = 'type === "Shrine"') {{(entry.nameOfDeity ? entry.nameOfDeity : 'New ' + type)}}
+        legend(*ngIf = 'type === "Attraction"') {{(entry.title ? entry.title : 'New ' + type)}}
+        .shrine-detail(*ngIf = 'type === "Shrine"')
+          .form-group
+            label(for='nameOfDeity') Name of Deity
+            input.form-control(type='text', [(ngModel)]='entry.nameOfDeity')
+          .form-group
+            label(for='typeOfDeity') Type of Deity
+            input.form-control(type='text', [(ngModel)]='entry.typeOfDeity')
+        .shrine-detail(*ngIf = 'type === "Attraction"')
+          .form-group
+            label(for='title') Title
+            input.form-control(type='text', [(ngModel)]='entry.title')
+          .form-group
+            label(for='description') Description
+            input.form-control(type='text', [(ngModel)]='entry.description')
+        button.btn.btn-danger((click) = 'removeBtnClicked(idx)')
+          span.glyphicon.glyphicon-minus
+          |&nbsp; Remove {{type}}
+    button.btn.btn-default((click) = 'addBtnClicked()')
+      span.glyphicon.glyphicon-plus
+      |&nbsp; Add New {{type}}
