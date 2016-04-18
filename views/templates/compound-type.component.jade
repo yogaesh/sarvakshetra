@@ -1,0 +1,60 @@
+.details
+  fieldset
+    legend {{title}}
+    .address(*ngIf = 'type === "Address"')
+      .form-group
+        label(for='addressee') Addressee
+        input.form-control(type='text', [(ngModel)]='model.addressee', placeholder = 'Example: Sri Dharbaranyeswaraswamy Devasthanam')
+      .form-group
+        label(for='line1') Address Line 1
+        input.form-control(type='text', [(ngModel)]='model.line1', placeholder = 'Example: Temple Street')
+      .form-group
+        label(for='line2') Address Line 2
+        input.form-control(type='text', [(ngModel)]='model.line2', placeholder = 'Example: Opposite Bus Stand')
+      .form-group
+        label(for='city') City
+        input.form-control(type='text', [(ngModel)]='model.city', placeholder = 'Example: Tirunallar')
+      .form-group
+        label(for='district') District
+        input.form-control(type='text', [(ngModel)]='model.district', placeholder = 'Example: Karaikkal')
+      .form-group
+        label(for='state') State
+        input.form-control(type='text', [(ngModel)]='model.state', placeholder = 'Example: Pondicherry')
+      .form-group
+        label(for='zip') Postal Code
+        input.form-control(type='text', [(ngModel)]='model.zip', placeholder = 'Example: 609607')
+      .form-group
+        label(for='country') Country
+        input.form-control(type='text', [(ngModel)]='model.country', placeholder = 'Example: India')
+    .paymentDetails(*ngIf = 'type === "PaymentDetails"')
+      .form-group
+        label(for='accountNumber') Account Number
+        input.form-control(type='text', [(ngModel)]='model.accountNumber', placeholder = 'Example: 1234-5678-1234-56789')
+      .form-group
+        label(for='bankName') Bank Name
+        input.form-control(type='text', [(ngModel)]='model.bankName', placeholder = 'Example: State Bank of India')
+      .form-group
+        label(for='branch') Branch
+        input.form-control(type='text', [(ngModel)]='model.branch', placeholder = 'Example: Thirunallar')
+      .form-group
+        label(for='city') City
+        input.form-control(type='text', [(ngModel)]='model.city', placeholder = 'Example: Karaikkal')
+      .form-group
+        label(for='state') State
+        input.form-control(type='text', [(ngModel)]='model.state', placeholder = 'Example: Pondichery')
+      .form-group
+        label(for='country') Country
+        input.form-control(type='text', [(ngModel)]='model.country', placeholder = 'Example: India')
+    .contactDetails(*ngIf = 'type === "ContactDetails"')
+          .form-group
+            label(for='addressee') Addressee
+            input.form-control(type='text', [(ngModel)]='model.addressee', placeholder = 'Example: The Executive Officer (Temples)')
+          .form-group
+            label(for='phone') Phone
+            input.form-control(type='text', [(ngModel)]='model.phone', placeholder = 'Example: +91-4368-236530/236504')
+          .form-group
+            label(for='mobile') Mobile
+            input.form-control(type='text', [(ngModel)]='model.mobile', placeholder = 'Example: +91-9880040000')
+          .form-group
+            label(for='fax') Fax
+            input.form-control(type='text', [(ngModel)]='model.fax', placeholder = 'Example: +91-4368-236504')

@@ -1,24 +1,42 @@
-#details
+.details
   fieldset
     legend {{title}}
     .detail(*ngFor = '#entry of entries; #index = index')
       fieldset
         legend(*ngIf = 'type === "Shrine"') {{(entry.nameOfDeity ? entry.nameOfDeity : 'New ' + type)}}
-        legend(*ngIf = 'type === "Attraction"') {{(entry.title ? entry.title : 'New ' + type)}}
+        legend(*ngIf = 'type === "Attraction" || type === "Event"') {{(entry.title ? entry.title : 'New ' + type)}}
+        legend(*ngIf = 'type === "Schedule"') {{(entry.event ? entry.event : 'New ' + type)}}
         .shrine-detail(*ngIf = 'type === "Shrine"')
           .form-group
             label(for='nameOfDeity') Name of Deity
-            input.form-control(type='text', [(ngModel)]='entry.nameOfDeity')
+            input.form-control(type='text', [(ngModel)]='entry.nameOfDeity', placeholder='Example: Dharbaranyeshwarar')
           .form-group
             label(for='typeOfDeity') Type of Deity
-            input.form-control(type='text', [(ngModel)]='entry.typeOfDeity')
-        .shrine-detail(*ngIf = 'type === "Attraction"')
+            input.form-control(type='text', [(ngModel)]='entry.typeOfDeity', placeholder='Example: Siva')
+        .attraction-detail(*ngIf = 'type === "Attraction"')
           .form-group
             label(for='title') Title
-            input.form-control(type='text', [(ngModel)]='entry.title')
+            input.form-control(type='text', [(ngModel)]='entry.title', placeholder='Example: Holy Chariots')
           .form-group
             label(for='description') Description
-            input.form-control(type='text', [(ngModel)]='entry.description')
+            textarea.form-control([(ngModel)]='entry.description', placeholder='Example: Thirunallar has two beautiful holy chariots. They are quiet large in size and are famed for their artistic carvings. They are taken out during special festivals and the Gods and Goddesses are taken out in procession around the temple in these holy chariots. It is a great delight for the devotees to have "darsanam" of Gods and Goddesses in procession.')
+        .event-detail(*ngIf = 'type === "Event"')
+          .form-group
+            label(for='title') Title
+            input.form-control(type='text', [(ngModel)]='entry.title', placeholder = 'Example: Chariot')
+          .form-group
+            label(for='description') Description
+            textarea.form-control([(ngModel)]='entry.description', placeholder = 'Example: Holy chariots progressing through the streets of Karaikkal')
+          .form-group
+            label(for='timeOfYear') Time of Year
+            textarea.form-control([(ngModel)]='entry.timeOfYear', placeholder = 'Example: Second Poornima of Shravana month (August-September). Please visit temple website for exact dates in current year.')
+        .daily-schedule-detail(*ngIf = 'type === "Schedule"')
+          .form-group
+            label(for='time') Time
+            input.form-control(type='text', [(ngModel)]='entry.time', placeholder = 'Example: 05:00 AM - 06:00 AM')
+          .form-group
+            label(for='event') Event
+            input.form-control(type='text', [(ngModel)]='entry.event', placeholder = 'Example: Udhaga Shanthi')
         button.btn.btn-danger((click) = 'removeBtnClicked(idx)')
           span.glyphicon.glyphicon-minus
           |&nbsp; Remove {{type}}

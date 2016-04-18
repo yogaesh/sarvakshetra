@@ -15,7 +15,6 @@ export class MultipleEntryComponent {
 
   addBtnClicked(){
     let entry = this.factory.getInstance(this.type);
-    //let shrine = new Shrine('', '');
     this.entries.push(entry);
   }
   removeBtnClicked(index: number){

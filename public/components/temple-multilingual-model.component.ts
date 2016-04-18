@@ -1,5 +1,3 @@
-import {LocalizedTempleDetail} from './temple-model.component'
-
 export class TempleDetails {
 
   constructor(
@@ -19,5 +17,5 @@ export class TempleDetails {
 }
 
 interface LanguageToTempleDetailsMap {
-    [language: string]: LocalizedTempleDetail;
+    //[language: string]: LocalizedTempleDetail;
 }

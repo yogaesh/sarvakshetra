@@ -44,14 +44,14 @@ export class Shrine{
 
 export class Address{
   constructor(
-    public addressee: string,
-    public line1: string,
-    public line2: string,
-    public city: string,
-    public district: string,
-    public state: string,
-    public country: string,
-    public zip: string
+    public addressee?: string,
+    public line1?: string,
+    public line2?: string,
+    public city?: string,
+    public district?: string,
+    public state?: string,
+    public country?: string,
+    public zip?: string
   ){}
 }
 
@@ -64,37 +64,37 @@ export class Attraction{
 
 export class PaymentDetails{
   constructor(
-    public accountNumber: string,
-    public bankName: string,
-    public branch: string,
-    public city: string,
-    public state: string,
-    public country: string
+    public accountNumber?: string,
+    public bankName?: string,
+    public branch?: string,
+    public city?: string,
+    public state?: string,
+    public country?: string
   ){}
 }
 
 export class ContactDetails{
   constructor(
-    public addressee: string,
-    public phone: string,
-    public mobile: string,
-    public fax: string
+    public addressee?: string,
+    public phone?: string,
+    public mobile?: string,
+    public fax?: string
   ){}
 }
 
 export class PeakTime{
   constructor(
-    public daysOfWeek: string[],
-    public occasions: string[],
-    public monthsOfYear: string
+    public daysOfWeek?: string[],
+    public occasions?: string,
+    public monthsOfYear?: string[]
   ){}
 }
 
 export class Event extends Attraction{
   constructor(
-    title,
-    description,
-    public timeOfYear : string
+    title?,
+    description?,
+    public timeOfYear? : string
   ){
     super(title, description);
   }
@@ -102,7 +102,7 @@ export class Event extends Attraction{
 
 export class Schedule{
   constructor(
-    public time: string,
-    public event: string
+    public time?: string,
+    public event?: string
   ){}
 }

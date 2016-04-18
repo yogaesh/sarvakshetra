@@ -1,4 +1,4 @@
-System.register(['angular2/core', './multiple-entry.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './multiple-entry.component', './compound-type.component', './peak-times.component', './model-definitions'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './multiple-entry.component'], function(export
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, multiple_entry_component_1;
+    var core_1, multiple_entry_component_1, compound_type_component_1, peak_times_component_1, Models;
     var AppComponent;
     return {
         setters:[
@@ -19,18 +19,39 @@ System.register(['angular2/core', './multiple-entry.component'], function(export
             },
             function (multiple_entry_component_1_1) {
                 multiple_entry_component_1 = multiple_entry_component_1_1;
+            },
+            function (compound_type_component_1_1) {
+                compound_type_component_1 = compound_type_component_1_1;
+            },
+            function (peak_times_component_1_1) {
+                peak_times_component_1 = peak_times_component_1_1;
+            },
+            function (Models_1) {
+                Models = Models_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
                     this.shrines = new Array();
                     this.attractions = new Array();
+                    this.events = new Array();
+                    this.schedule = new Array();
+                    this.address = new Models.Address();
+                    this.paymentDetails = new Models.PaymentDetails();
+                    this.contactDetails = new Models.ContactDetails();
+                    this.peakTime = new Models.PeakTime();
+                    this.specialties = new Array();
                 }
+                AppComponent.prototype.onSubmit = function () {
+                    var result = {};
+                    result['shrines'] = this.shrines;
+                    alert(JSON.stringify(result));
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
                         templateUrl: 'templates/test.html',
-                        directives: [multiple_entry_component_1.MultipleEntryComponent]
+                        directives: [multiple_entry_component_1.MultipleEntryComponent, compound_type_component_1.CompoundTypeComponent, peak_times_component_1.PeakTimesComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

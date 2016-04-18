@@ -1,0 +1,14 @@
+.peak-time
+  fieldset
+    legend Peak Times
+    .form-group
+      label(for='daysOfWeek') Days (Select one or more)
+      select.form-control(multiple, size = '7', [(ngModel)]='model.daysOfWeek')
+        option(*ngFor = '#day of days', value = 'day') {{day}}
+    .form-group
+      label(for='monthsOfYear') Months (Select one or more)
+      select.form-control(multiple, size = '12', [(ngModel)]='model.monthsOfYear')
+        option(*ngFor = '#month of months', value = 'month') {{month}}
+    .form-group
+      label(for='occasions') Occasions
+      input.form-control(type='text', [(ngModel)]='model.occassions', placeholder = 'Example: Saturn Transit (Sani Peyarchi)')

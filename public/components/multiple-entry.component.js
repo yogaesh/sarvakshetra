@@ -30,7 +30,6 @@ System.register(['angular2/core', 'angular2/common', './model-definitions'], fun
                 }
                 MultipleEntryComponent.prototype.addBtnClicked = function () {
                     var entry = this.factory.getInstance(this.type);
-                    //let shrine = new Shrine('', '');
                     this.entries.push(entry);
                 };
                 MultipleEntryComponent.prototype.removeBtnClicked = function (index) {
