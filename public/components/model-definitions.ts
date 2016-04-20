@@ -2,8 +2,10 @@ export class ModelFactory{
   public getInstance(type: string){
     let proto = eval(type).prototype;
     if(proto){
+      console.log(`Type is ${type} and it's prototypified`);
       return Object.create(proto);
     }else{
+      console.log(`Type is ${type} and it cannot be prototypified`);
       throw new EvalError('Invalid type');
     }
   }
@@ -12,27 +14,35 @@ export class ModelFactory{
 export class LocalizedTempleDetail {
 
   constructor(
-    public id: number,
-    public name: string,
-    public otherNames: string[],
-    public descriptionShort: string,
-    public descriptionLong: string,
-    public sthalaPurana : string,
-    public established: string,
-    public mainDeity: string,
-    public renownForDeity: string,
-    public shrines: Shrine[],
-    public address: Address,
-    public specialty: string[],
-    public attractions: Attraction[],
-    public paymentDetails: PaymentDetails,
-    public contactDetails: ContactDetails,
-    public directions: string,
-    public travelTips: string,
-    public peakTimes: PeakTime[],
-    public events: Event[],
-    public dailySchedule: Schedule[]
-  ) {  }
+    public name?: string,
+    public otherNames?: string[],
+    public descriptionShort?: string,
+    public descriptionLong?: string,
+    public sthalaPurana? : string,
+    public established? : string,
+    public mainDeity? : string,
+    public renownForDeity?: string,
+    public shrines?: Shrine[],
+    public address?: Address,
+    public specialty?: string,
+    public attractions?: Attraction[],
+    public paymentDetails?: PaymentDetails,
+    public contactDetails?: ContactDetails,
+    public directions?: string,
+    public travelTips?: string,
+    public peakTimes?: PeakTime,
+    public events?: Event[],
+    public dailySchedule?: Schedule[]
+  ) {
+    this.shrines = new Array<Shrine>();
+    this.attractions = new Array<Attraction>();
+    this.events = new Array<Event>();
+    this.dailySchedule = new Array<Schedule>();
+    this.address = new Address();
+    this.paymentDetails = new PaymentDetails();
+    this.contactDetails = new ContactDetails();
+    this.peakTimes = new PeakTime();
+  }
 }
 
 export class Shrine{
@@ -90,19 +100,45 @@ export class PeakTime{
   ){}
 }
 
-export class Event extends Attraction{
+export class Event{
   constructor(
-    title?,
-    description?,
+    public title? : string,
+    public description? : string,
     public timeOfYear? : string
-  ){
-    super(title, description);
-  }
+  ){}
 }
 
 export class Schedule{
   constructor(
     public time?: string,
     public event?: string
+  ){}
+}
+
+export class TempleDetail{
+  constructor(
+    public id? : string,
+    public localizedDetails? : LocalizedTempleDetail[],
+    public images? : Media[],
+    public videos? : Media[],
+    public website? : string,
+    public averageAnnualVisitorCount? : number,
+    public status? : string,
+    public createdBy? : string,
+    public createdDate? : string,
+    public lastModifiedBy? : string,
+    public lastModifiedDate? : string,
+    public lastApprovedBy? : string,
+    public lastApprovedDate? : string
+  ){
+
+  }
+}
+
+export class Media{
+  constructor(
+    public url? : string,
+    public title? : string,
+    public description? : string
   ){}
 }

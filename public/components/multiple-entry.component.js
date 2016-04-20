@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/common', './model-definitions'], fun
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, model_definitions_1;
+    var core_1, common_1, common_2, model_definitions_1;
     var MultipleEntryComponent;
     return {
         setters:[
@@ -19,6 +19,7 @@ System.register(['angular2/core', 'angular2/common', './model-definitions'], fun
             },
             function (common_1_1) {
                 common_1 = common_1_1;
+                common_2 = common_1_1;
             },
             function (model_definitions_1_1) {
                 model_definitions_1 = model_definitions_1_1;
@@ -56,7 +57,7 @@ System.register(['angular2/core', 'angular2/common', './model-definitions'], fun
                     core_1.Component({
                         selector: 'multiple-entry',
                         templateUrl: '../templates/multiple-entry.component.html',
-                        directives: [common_1.FORM_DIRECTIVES]
+                        directives: [common_2.FORM_DIRECTIVES, common_1.NgClass]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], MultipleEntryComponent);

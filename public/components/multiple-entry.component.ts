@@ -1,11 +1,11 @@
 import {Component, Input} from 'angular2/core';
-import {NgForm}    from 'angular2/common';
+import {NgForm, NgClass}    from 'angular2/common';
 import {ControlGroup, Control, FormBuilder, FORM_DIRECTIVES} from 'angular2/common';
 import {ModelFactory} from './model-definitions'
 @Component({
   selector: 'multiple-entry',
   templateUrl: '../templates/multiple-entry.component.html',
-  directives: [FORM_DIRECTIVES]
+  directives: [FORM_DIRECTIVES, NgClass]
 })
 export class MultipleEntryComponent {
   @Input() type;

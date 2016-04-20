@@ -1,12 +1,7 @@
 System.register([], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var __extends = (this && this.__extends) || function (d, b) {
-        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-    var ModelFactory, LocalizedTempleDetail, Shrine, Address, Attraction, PaymentDetails, ContactDetails, PeakTime, Event, Schedule;
+    var ModelFactory, LocalizedTempleDetail, Shrine, Address, Attraction, PaymentDetails, ContactDetails, PeakTime, Event, Schedule, TempleDetail, Media;
     return {
         setters:[],
         execute: function() {
@@ -16,9 +11,11 @@ System.register([], function(exports_1, context_1) {
                 ModelFactory.prototype.getInstance = function (type) {
                     var proto = eval(type).prototype;
                     if (proto) {
+                        console.log("Type is " + type + " and it's prototypified");
                         return Object.create(proto);
                     }
                     else {
+                        console.log("Type is " + type + " and it cannot be prototypified");
                         throw new EvalError('Invalid type');
                     }
                 };
@@ -26,8 +23,7 @@ System.register([], function(exports_1, context_1) {
             }());
             exports_1("ModelFactory", ModelFactory);
             LocalizedTempleDetail = (function () {
-                function LocalizedTempleDetail(id, name, otherNames, descriptionShort, descriptionLong, sthalaPurana, established, mainDeity, renownForDeity, shrines, address, specialty, attractions, paymentDetails, contactDetails, directions, travelTips, peakTimes, events, dailySchedule) {
-                    this.id = id;
+                function LocalizedTempleDetail(name, otherNames, descriptionShort, descriptionLong, sthalaPurana, established, mainDeity, renownForDeity, shrines, address, specialty, attractions, paymentDetails, contactDetails, directions, travelTips, peakTimes, events, dailySchedule) {
                     this.name = name;
                     this.otherNames = otherNames;
                     this.descriptionShort = descriptionShort;
@@ -47,6 +43,14 @@ System.register([], function(exports_1, context_1) {
                     this.peakTimes = peakTimes;
                     this.events = events;
                     this.dailySchedule = dailySchedule;
+                    this.shrines = new Array();
+                    this.attractions = new Array();
+                    this.events = new Array();
+                    this.dailySchedule = new Array();
+                    this.address = new Address();
+                    this.paymentDetails = new PaymentDetails();
+                    this.contactDetails = new ContactDetails();
+                    this.peakTimes = new PeakTime();
                 }
                 return LocalizedTempleDetail;
             }());
@@ -112,14 +116,14 @@ System.register([], function(exports_1, context_1) {
                 return PeakTime;
             }());
             exports_1("PeakTime", PeakTime);
-            Event = (function (_super) {
-                __extends(Event, _super);
+            Event = (function () {
                 function Event(title, description, timeOfYear) {
-                    _super.call(this, title, description);
+                    this.title = title;
+                    this.description = description;
                     this.timeOfYear = timeOfYear;
                 }
                 return Event;
-            }(Attraction));
+            }());
             exports_1("Event", Event);
             Schedule = (function () {
                 function Schedule(time, event) {
@@ -129,6 +133,34 @@ System.register([], function(exports_1, context_1) {
                 return Schedule;
             }());
             exports_1("Schedule", Schedule);
+            TempleDetail = (function () {
+                function TempleDetail(id, localizedDetails, images, videos, website, averageAnnualVisitorCount, status, createdBy, createdDate, lastModifiedBy, lastModifiedDate, lastApprovedBy, lastApprovedDate) {
+                    this.id = id;
+                    this.localizedDetails = localizedDetails;
+                    this.images = images;
+                    this.videos = videos;
+                    this.website = website;
+                    this.averageAnnualVisitorCount = averageAnnualVisitorCount;
+                    this.status = status;
+                    this.createdBy = createdBy;
+                    this.createdDate = createdDate;
+                    this.lastModifiedBy = lastModifiedBy;
+                    this.lastModifiedDate = lastModifiedDate;
+                    this.lastApprovedBy = lastApprovedBy;
+                    this.lastApprovedDate = lastApprovedDate;
+                }
+                return TempleDetail;
+            }());
+            exports_1("TempleDetail", TempleDetail);
+            Media = (function () {
+                function Media(url, title, description) {
+                    this.url = url;
+                    this.title = title;
+                    this.description = description;
+                }
+                return Media;
+            }());
+            exports_1("Media", Media);
         }
     }
 });

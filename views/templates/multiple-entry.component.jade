@@ -1,11 +1,12 @@
 .details
-  fieldset
+  fieldset([ngClass] = '{outer : type === "Media"}')
     legend {{title}}
-    .detail(*ngFor = '#entry of entries; #index = index')
+    .detail(*ngFor = '#entry of entries; #idx = index')
       fieldset
         legend(*ngIf = 'type === "Shrine"') {{(entry.nameOfDeity ? entry.nameOfDeity : 'New ' + type)}}
         legend(*ngIf = 'type === "Attraction" || type === "Event"') {{(entry.title ? entry.title : 'New ' + type)}}
         legend(*ngIf = 'type === "Schedule"') {{(entry.event ? entry.event : 'New ' + type)}}
+        legend(*ngIf = 'type === "Media"') {{(entry.title ? entry.title : 'New ' + type)}}
         .shrine-detail(*ngIf = 'type === "Shrine"')
           .form-group
             label(for='nameOfDeity') Name of Deity
@@ -37,6 +38,19 @@
           .form-group
             label(for='event') Event
             input.form-control(type='text', [(ngModel)]='entry.event', placeholder = 'Example: Udhaga Shanthi')
+        .media-detail(*ngIf = 'type === "Media"')
+          .form-group
+            label(for='url') URL
+            input.form-control(*ngIf = 'title === "Images"', type='text', [(ngModel)]='entry.url', placeholder = 'Example: http://thirunallartemple.com/wp-content/uploads/2013/12/Fotor1217170819.jpg')
+            input.form-control(*ngIf = 'title === "Videos"', type='text', [(ngModel)]='entry.url', placeholder = 'Example: https://www.youtube.com/watch?v=b9KA2-9mHhM')
+          .form-group
+            label(for='title') Title
+            input.form-control(*ngIf = 'title === "Images"', type='text', [(ngModel)]='entry.title', placeholder = 'Example: Cover')
+            input.form-control(*ngIf = 'title === "Videos"', type='text', [(ngModel)]='entry.title', placeholder = 'Example: Temple History')
+          .form-group
+            label(for='description') Description
+            textarea.form-control(*ngIf = 'title === "Images"', [(ngModel)]='entry.description', placeholder = 'Example: Raja Goupram with Sani Bhagavan')
+            textarea.form-control(*ngIf = 'title === "Videos"', [(ngModel)]='entry.description', placeholder = 'Example: The history and the specialty of Thirunallar temple')
         button.btn.btn-danger((click) = 'removeBtnClicked(idx)')
           span.glyphicon.glyphicon-minus
           |&nbsp; Remove {{type}}

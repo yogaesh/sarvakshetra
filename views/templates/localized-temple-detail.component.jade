@@ -1,0 +1,41 @@
+.form-group
+  label(for='language') Language
+  input.form-control(type='text', [(ngModel)]='model.language', placeholder='Examples: English -or- தமிழ்')
+.form-group
+  label(for='name') Name
+  input.form-control(type='text', [(ngModel)]='model.name', placeholder='Example: Tirunallar Saniswaran Temple')
+.form-group
+  label(for='otherNames') Other Names
+  input.form-control(type='text', [(ngModel)]='model.otherNames', placeholder='Example: Dharbaranyeswarar Temple')
+.form-group
+  label(for='descriptionShort') Description (Short)
+  textarea.form-control([(ngModel)]='model.descriptionShort', placeholder='Example: A Siva temple dedicated to Lord Sani(saturn), counted as one of the nine Navagraha temples. The greatness of the Thirunallur temple is attributed to the unique idol of Lord Shani as he stands blessing the devotee – abhayahastham.')
+.form-group
+  label(for='descriptionLong') Description (Long)
+  textarea.form-control([(ngModel)]='model.descriptionLong', rows = 7, placeholder='Example: A temple dedicated to Lord Sani (saturn), located in Tirunallar in Karaikal district of Pondicherry, India. The presiding deity is Dharbaranyeswarar(Lord Siva) and is believed to have been made of dharba grass. The worship is also centered around Saniswarar (saturn), originally treated as the door keeper of the shrine. According to Hindu mythology, saturn resides in each rasi(zodiac) for two and half years. The belief is the malevolent planet is worshipped before entering the inner sanctum of Lord Siva.It has been revered by the hymns of 7th century Tamil saivite poets and is classified as one of the 275 temples categorized under "Paadal Petra Sthalam". Constructed by chozha kings, this Siva temple is counted as one of the Navagraha Temples for planet Saturn. Tirugnana Sambandar, a 7th-century Tamil Saivite poet, venerated Naganathar in ten verses in Tevaram, compiled as the First Tirumurai. Appar, a contemporary of Sambandar, also venerated Dharbaranyeswarar in 10 verses in Tevaram, compiled as the Fifth Tirumurai. It is the staunch belief and experience too that those afflicted by the adverse effects of Saturn get a relief after praying to the Saturn in the Darbaranyeswarar temple. They also come here for repentance from sins, curing of diseases, getting oratory skills. They pray to Darbaranyeswarar for peaceful marriage alliances. Above all they get total mental peace.')
+.form-group
+  label(for='sthalaPurana') Sthala Purana (Temple History)
+  textarea.form-control([(ngModel)]='model.sthalaPurana', rows = 3, placeholder='Example: This place is called "Nallaaru" because famous king Nala offered his prayers here and got out of the malefic spell cast by Lord Saneeswar. When the verses composed at this place termed "Bogamaartha Poonmulaiyaal", by saint Thirugnanasammandar, was thrown into fire, as a part of philosophical debate with jains over the supremacy of faiths, the manuscripts remained unaffected by fire, deeprooting Saiva philosophy.')
+.form-group
+  label(for='established') Established (Year/Century)
+  input.form-control(type='text', [(ngModel)]='model.established', placeholder='Example: 7th Century AD')
+.form-group
+  label(for='mainDeity') Main Deity
+  input.form-control(type='text', [(ngModel)]='model.mainDeity', placeholder='Example: Siva')
+.form-group
+  label(for='renownForDeity') Renown For Deity
+  input.form-control(type='text', [(ngModel)]='model.renownForDeity', placeholder='Example: Saturn')
+multiple-entry([entries] = 'model.shrines', type = 'Shrine', title = 'Shrines')
+compound-type([model] = 'model.address', type = 'Address', title = 'Address')
+.form-group
+  label(for='directions') Directions
+  textarea.form-control([(ngModel)]='model.directions', rows = 3, placeholder='Example: Thirunallaru Shani Temple is located about 5 km west of Karaikal in Pondicherry. The temple lies on the Karaikal – Mayiladuthurai and Karaikal – Kumbakonam road. There are direct buses from Chennai to Thirunallar. The easiest route is from Chennai to Thirunallar is via Tindivanam, Pondicherry, Chidambaram, Tranquebar, Karaikal. Nearest Railway Station to Thirunallar Shani Temple is the Mayiladuthurai Railway Station.')
+.form-group
+  label(for='specialties') Specialties
+  input.form-control(type='text', [(ngModel)]='model.specialties', placeholder='Example: Sani Dhosha Remedy, Navagraha Dhosha Remedy')
+multiple-entry([entries] = 'model.dailySchedule', type = 'Schedule', title = 'Daily Schedule')
+multiple-entry([entries] = 'model.attractions', type = 'Attraction', title = 'Attractions')
+multiple-entry([entries] = 'model.events', type = 'Event', title = 'Events')
+compound-type([model] = 'model.paymentDetails', type = 'PaymentDetails', title = 'Payment Details')
+compound-type([model] = 'model.contactDetails', type = 'ContactDetails', title = 'Contact Details')
+peak-times([model] = 'model.peakTimes')
