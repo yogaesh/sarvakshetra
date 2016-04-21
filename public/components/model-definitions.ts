@@ -2,10 +2,8 @@ export class ModelFactory{
   public getInstance(type: string){
     let proto = eval(type).prototype;
     if(proto){
-      console.log(`Type is ${type} and it's prototypified`);
       return Object.create(proto);
     }else{
-      console.log(`Type is ${type} and it cannot be prototypified`);
       throw new EvalError('Invalid type');
     }
   }
@@ -88,7 +86,8 @@ export class ContactDetails{
     public addressee?: string,
     public phone?: string,
     public mobile?: string,
-    public fax?: string
+    public fax?: string,
+    public email? : string
   ){}
 }
 
@@ -131,7 +130,9 @@ export class TempleDetail{
     public lastApprovedBy? : string,
     public lastApprovedDate? : string
   ){
-
+    this.localizedDetails = new Array<LocalizedTempleDetail>();
+    this.images = new Array<Media>();
+    this.videos = new Array<Media>();
   }
 }
 

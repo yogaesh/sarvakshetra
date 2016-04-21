@@ -13,16 +13,10 @@ export class TempleFormComponent {
   @Input()
   operation;
   modelFactory = new Models.ModelFactory();
-  templeDetails;
-  localizedDetails = new Array<Models.LocalizedTempleDetail>();
-  images = new Array<Models.Media>();
-  videos = new Array<Models.Media>();
+  templeDetails = this.modelFactory.getInstance('TempleDetail');
 
   constructor(){
-    this.templeDetails = this.modelFactory.getInstance('TempleDetail');
-    this.templeDetails.localizedDetails = this.localizedDetails;
-    this.templeDetails.images = this.images;
-    this.templeDetails.videos = this.videos;
+    this.templeDetails.constructor();
   }
 
   saveTemple(){
@@ -31,9 +25,9 @@ export class TempleFormComponent {
   addTempleDetail(){
     let templeDetail = this.modelFactory.getInstance('LocalizedTempleDetail');
     templeDetail.constructor();
-    this.localizedDetails.push(templeDetail);
+    this.templeDetails.localizedDetails.push(templeDetail);
   }
   removeTempleDetail(index){
-    this.localizedDetails.splice(index, 1);
+    this.templeDetails.localizedDetails.splice(index, 1);
   }
 }

@@ -11,11 +11,9 @@ System.register([], function(exports_1, context_1) {
                 ModelFactory.prototype.getInstance = function (type) {
                     var proto = eval(type).prototype;
                     if (proto) {
-                        console.log("Type is " + type + " and it's prototypified");
                         return Object.create(proto);
                     }
                     else {
-                        console.log("Type is " + type + " and it cannot be prototypified");
                         throw new EvalError('Invalid type');
                     }
                 };
@@ -98,11 +96,12 @@ System.register([], function(exports_1, context_1) {
             }());
             exports_1("PaymentDetails", PaymentDetails);
             ContactDetails = (function () {
-                function ContactDetails(addressee, phone, mobile, fax) {
+                function ContactDetails(addressee, phone, mobile, fax, email) {
                     this.addressee = addressee;
                     this.phone = phone;
                     this.mobile = mobile;
                     this.fax = fax;
+                    this.email = email;
                 }
                 return ContactDetails;
             }());
@@ -148,6 +147,9 @@ System.register([], function(exports_1, context_1) {
                     this.lastModifiedDate = lastModifiedDate;
                     this.lastApprovedBy = lastApprovedBy;
                     this.lastApprovedDate = lastApprovedDate;
+                    this.localizedDetails = new Array();
+                    this.images = new Array();
+                    this.videos = new Array();
                 }
                 return TempleDetail;
             }());

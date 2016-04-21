@@ -33,13 +33,8 @@ System.register(['angular2/core', './localized-temple-detail.component', './mult
             TempleFormComponent = (function () {
                 function TempleFormComponent() {
                     this.modelFactory = new Models.ModelFactory();
-                    this.localizedDetails = new Array();
-                    this.images = new Array();
-                    this.videos = new Array();
                     this.templeDetails = this.modelFactory.getInstance('TempleDetail');
-                    this.templeDetails.localizedDetails = this.localizedDetails;
-                    this.templeDetails.images = this.images;
-                    this.templeDetails.videos = this.videos;
+                    this.templeDetails.constructor();
                 }
                 TempleFormComponent.prototype.saveTemple = function () {
                     Rx_1.Observable.of(this.templeDetails).map(function (x) { return console.log(JSON.stringify(x)); }).subscribe();
@@ -47,10 +42,10 @@ System.register(['angular2/core', './localized-temple-detail.component', './mult
                 TempleFormComponent.prototype.addTempleDetail = function () {
                     var templeDetail = this.modelFactory.getInstance('LocalizedTempleDetail');
                     templeDetail.constructor();
-                    this.localizedDetails.push(templeDetail);
+                    this.templeDetails.localizedDetails.push(templeDetail);
                 };
                 TempleFormComponent.prototype.removeTempleDetail = function (index) {
-                    this.localizedDetails.splice(index, 1);
+                    this.templeDetails.localizedDetails.splice(index, 1);
                 };
                 __decorate([
                     core_1.Input(), 

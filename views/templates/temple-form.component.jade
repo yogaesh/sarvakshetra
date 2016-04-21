@@ -1,24 +1,24 @@
 h1 {{operation}} Temple
-input(type='hidden', [(ngModel)] = 'templeDetails.id')
-.details
-  fieldset.outer
-    legend Add Details
-    .localized-detail(*ngFor = '#entry of localizedDetails; #idx = index')
-      fieldset.outer
-        legend {{(entry.language ? 'Temple Details (in ' + entry.language + ')' : 'Temple Details (in a new language)')}}
-        localized-temple-detail([model] = 'entry')
-        button.btn.btn-danger((click) = 'removeTempleDetail(idx)')
-          span.glyphicon.glyphicon-minus
-          |&nbsp; Remove Temple Detail
-    button.btn.btn-default((click) = 'addTempleDetail()')
-      span.glyphicon.glyphicon-plus
-      |&nbsp; Add details in another language
-.form-group
-  label(for='website') Website
-  input.form-control(type='text', [(ngModel)]='templeDetails.website', placeholder='Examples: http://www.thirunallarutemple.org')
-multiple-entry([entries] = 'images', type = 'Media', title = 'Images')
-multiple-entry([entries] = 'videos', type = 'Media', title = 'Videos')
-.form-group
-  label(for='avgVisitorCount') Average Annual Visitor Count
-  input.form-control(type='text', [(ngModel)]='templeDetails.averageAnnualVisitorCount', placeholder='Examples: 5000000')
-button.btn.btn-success((click) = 'saveTemple()') Submit
+form
+  .details
+    fieldset.outer
+      legend Add Details
+      .localized-detail(*ngFor = '#entry of templeDetails.localizedDetails; #idx = index')
+        fieldset.outer
+          legend {{(entry.language ? 'Temple Details (in ' + entry.language + ')' : 'Temple Details (in a new language)')}}
+          localized-temple-detail([model] = 'entry')
+          button.btn.btn-danger((click) = 'removeTempleDetail(idx)')
+            span.glyphicon.glyphicon-minus
+            |&nbsp; Remove Temple Detail
+      button.btn.btn-default((click) = 'addTempleDetail()')
+        span.glyphicon.glyphicon-plus
+        |&nbsp; Add details in another language
+  .form-group
+    label(for='website') Website
+    input.form-control(type='url', [(ngModel)]='templeDetails.website', placeholder='Examples: http://www.thirunallarutemple.org')
+  multiple-entry([entries] = 'templeDetails.images', type = 'Media', title = 'Images')
+  multiple-entry([entries] = 'templeDetails.videos', type = 'Media', title = 'Videos')
+  .form-group
+    label(for='avgVisitorCount') Average Annual Visitor Count
+    input.form-control(required, type='number', [(ngModel)]='templeDetails.averageAnnualVisitorCount', placeholder='Example: 5000000')
+  button.btn.btn-success((click) = 'saveTemple()') Submit
